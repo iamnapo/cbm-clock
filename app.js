@@ -5,20 +5,15 @@ const app = express();
 const http = require('http');
 const httpServer = http.createServer(app);
 const io = require('socket.io').listen(httpServer);
-const bodyParser = require('body-parser');
-const chalk = require('chalk');
 
-const clock1 = require('./scripts/clock_1');
-const clock2 = require('./scripts/clock_2');
-const clock3 = require('./scripts/clock_3');
-const clock4 = require('./scripts/clock_4');
-const clock5 = require('./scripts/clock_5');
+const clock1 = require('./scripts/default');
+const clock2 = require('./scripts/gbn');
+const clock3 = require('./scripts/gbm');
+const clock4 = require('./scripts/cbm-sameUnits');
+const clock5 = require('./scripts/cbm-differentUnits');
 
 app.set('view engine', 'pug');
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
 app.use('/', express.static(__dirname + '/public'));
-app.use('/', express.static(__dirname + '/scripts'));
 
 app.get('/', (req, res) => res.send('<h1>Hello Napo 😀</h1>'));
 app.get('/1', (req, res) => res.render('clock_1', {title: 'Case 1'}));
@@ -45,8 +40,7 @@ let io2;
 io.of('/2').on('connection', (socket) => {
   socket.on('clock2', () => {
     io1 = setInterval(() => {
-      let times = clock2();
-      io.of('/2').emit('data2', times);
+      clock2().then((times) => io.of('/2').emit('data2', times));
     }, 1000);
   });
   socket.on('disconnect', () => {
@@ -94,7 +88,7 @@ io.of('/5').on('connection', (socket) => {
 });
 
 let myServer = httpServer.listen(3001, () => {
-  console.log('Server ' + chalk.green('started') + ' at http://localhost:%s. Have fun. 😀', 3001);
+  console.log('Server started at http://localhost:%s. Have fun. 😀', 3001);
 });
 exports.close = () => {
   myServer.close();
