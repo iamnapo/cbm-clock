@@ -52,8 +52,7 @@ let io3;
 io.of('/3').on('connection', (socket) => {
   socket.on('clock3', () => {
     io1 = setInterval(() => {
-      let times = clock3();
-      io.of('/3').emit('data3', times);
+      clock3().then((times) => io.of('/3').emit('data3', times));
     }, 1000);
   });
   socket.on('disconnect', () => {
