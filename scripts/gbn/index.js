@@ -1,7 +1,7 @@
 'use strict';
 
 const CallByMeaning = require('cbm-api');
-const cbm = new CallByMeaning('http://localhost:3000');
+const cbm = new CallByMeaning();
 
 // Create a function in the server for future reference
 let params = {
@@ -12,10 +12,10 @@ let params = {
   codeFile: __dirname.concat('/getTime.js'),
 };
 // cbm.create in generally blocking, but when asking to upload a file is not
-(async () => {
-  let res = await cbm.create(params, 'function');
-  return res;
-})().then((res) => console.log(res));
+// (async () => {
+//   let res = await cbm.create(params, 'function');
+//   return res;
+// })().then((res) => console.log(res));
 
 async function clock() {
   let result = await cbm.lookup('getTime'); // **

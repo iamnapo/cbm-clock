@@ -1,7 +1,7 @@
 'use strict';
 
 const CallByMeaning = require('cbm-api');
-const cbm = new CallByMeaning('http://localhost:3000');
+const cbm = new CallByMeaning();
 
 async function clock() {
   let time = await cbm.call({outputNodes: 'time', outputUnits: 'milliseconds'}); time = time.body;
