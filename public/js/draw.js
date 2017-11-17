@@ -1,5 +1,5 @@
 this.foreColor = '#000';
-this.bgColor = '#EEE';
+this.bgColor = '#00BFFF';
 this.width = 400;
 
 this.container = document.getElementById('clock');
@@ -8,7 +8,7 @@ this.container.style.fontcolor = this.foreColor;
 this.panel = document.createElement('div');
 this.panel.style.borderRadius = '50%';
 this.panel.style.backgroundColor = this.bgColor;
-this.panel.style.border = 'solid 1px #ccc';
+this.panel.style.border = 'solid 3px #6C7B8B';
 this.panel.style.width = this.width + 'px';
 this.panel.style.height = this.width + 'px';
 this.panel.style.position = 'relative';
@@ -77,7 +77,7 @@ hour.style.position = 'absolute';
 hour.style.border = 'solid 0px transparent';
 hour.style.left = hourleft + 'px';
 hour.style.top = hourTop + 'px';
-hour.style.borderTop = 'solid ' + (this.width * 0.5 - hourTop) + 'px #f60';
+hour.style.borderTop = 'solid ' + (this.width * 0.5 - hourTop) + 'px #458B74';
 hour.style.borderBottomWidth = (this.width * 0.5 - hourTop) + 'px';
 this.panel.appendChild(hour);
 
@@ -92,7 +92,7 @@ min.style.position = 'absolute';
 min.style.border = 'solid 0px transparent';
 min.style.left = minleft + 'px';
 min.style.top = minTop + 'px';
-min.style.borderTop = 'solid ' + (this.width * 0.5 - minTop) + 'px #09f';
+min.style.borderTop = 'solid ' + (this.width * 0.5 - minTop) + 'px #66CDAA';
 min.style.borderBottomWidth = (this.width * 0.5 - minTop) + 'px';
 this.panel.appendChild(min);
 
@@ -106,7 +106,7 @@ sec.style.position = 'absolute';
 sec.style.border = 'solid 0px transparent';
 sec.style.left = (this.width * 0.5 - secWidth) + 'px';
 sec.style.top = secTop + 'px';
-sec.style.borderTop = 'solid ' + (this.width * 0.5 - secTop) + 'px ' + this.foreColor;
+sec.style.borderTop = 'solid ' + (this.width * 0.5 - secTop) + 'px #00FA9A';
 sec.style.borderBottomWidth = (this.width * 0.5 - secTop) + 'px';
 this.panel.appendChild(sec);
 

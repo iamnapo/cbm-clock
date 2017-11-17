@@ -1,5 +1,11 @@
 extends header.pug
 block body
+  div(class='jumbotron col-md-6 d-flex align-items-center text-center')
+    div(class='row')
+      div
+        script(src='https://gist.github.com/iamnapo/ef9e3244660e7ac4c889c5c4237af8c1.js')
+      div
+        script(src='https://gist.github.com/iamnapo/02180187294dcc097c6a795a9e454cc8.js')
   script.
     var socket = io.connect('/2');
     socket.emit('clock2');

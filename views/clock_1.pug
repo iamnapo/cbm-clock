@@ -1,5 +1,8 @@
 extends header.pug
 block body
+  div(class='jumbotron col-md-6 d-flex align-items-center text-center')
+    div
+      script(src='https://gist.github.com/iamnapo/cfee15c288a4af23db90a2dd759962e2.js')
   script.
     var socket = io.connect('/1');
     socket.emit('clock1');
@@ -11,4 +14,3 @@ block body
       min.style.transform = 'rotate(' + roM + 'deg)';
       hour.style.transform = 'rotate(' + roH + 'deg)';
     });
-  p(style='display: flex; justify-content: center;')= sourceCode
