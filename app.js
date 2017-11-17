@@ -84,8 +84,9 @@ io.of('/5').on('connection', (socket) => {
   });
 });
 
-let myServer = httpServer.listen(3001, () => {
-  console.log('Server started at http://localhost:%s. Have fun. 😀', 3001);
+let port = process.env.PORT || 3000;
+let myServer = httpServer.listen(port, () => {
+  console.log('Server started at http://localhost:%s. Have fun. 😀', port);
 });
 exports.close = () => {
   myServer.close();
