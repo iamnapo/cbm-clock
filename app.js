@@ -5,15 +5,18 @@ const app = express();
 const http = require('http');
 const httpServer = http.createServer(app);
 const io = require('socket.io').listen(httpServer);
+const favicon = require('serve-favicon');
+const path = require('path');
+
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.set('view engine', 'pug');
+app.use('/', express.static(__dirname + '/public'));
 
 const clock1 = require('./scripts/default');
 const clock2 = require('./scripts/gbn');
 const clock3 = require('./scripts/gbm');
 const clock4 = require('./scripts/cbm-sameUnits');
 const clock5 = require('./scripts/cbm-differentUnits');
-
-app.set('view engine', 'pug');
-app.use('/', express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => res.render('landing', {title: 'CallByMeaning demo'}));
 app.get('/1', (req, res) => res.render('clock_1', {title: 'Default JavaScript'}));
