@@ -15,7 +15,7 @@ const clock5 = require('./scripts/cbm-differentUnits');
 app.set('view engine', 'pug');
 app.use('/', express.static(__dirname + '/public'));
 
-app.get('/', (req, res) => res.send('<h1>Hello friend 😀</h1>', {title: 'CallByMeaning demo'}));
+app.get('/', (req, res) => res.render('landing', {title: 'CallByMeaning demo'}));
 app.get('/1', (req, res) => res.render('clock_1', {title: 'Default JavaScript'}));
 app.get('/2', (req, res) => res.render('clock_2', {title: 'Get by name'}));
 app.get('/3', (req, res) => res.render('clock_3', {title: 'Get by meaning'}));
