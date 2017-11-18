@@ -1,5 +1,5 @@
 this.foreColor = '#000';
-this.bgColor = '#00BFFF';
+this.bgColor = '#666666';
 this.width = 400;
 
 this.container = document.getElementById('clock');
