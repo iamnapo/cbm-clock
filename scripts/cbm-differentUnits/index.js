@@ -4,9 +4,9 @@ const CallByMeaning = require('cbm-api');
 const cbm = new CallByMeaning();
 
 async function clock() {
-  let secondsUNIX = await cbm.call({outputNodes: 'time', outputUnits: 'seconds'}); secondsUNIX = secondsUNIX.body;
-  let minutesUNIX = await cbm.call({outputNodes: 'time', outputUnits: 'minutes'}); minutesUNIX = minutesUNIX.body;
-  let hoursUNIX = await cbm.call({outputNodes: 'time', outputUnits: 'hours'}); hoursUNIX = hoursUNIX.body;
+  let secondsUNIX = (await cbm.call('time', 'seconds')).body;
+  let minutesUNIX = (await cbm.call('time', 'minutes')).body;
+  let hoursUNIX = (await cbm.call('time', 'hours')).body;
 
   let seconds = ~~secondsUNIX % 60;
   let minutes = ~~minutesUNIX % 60;
