@@ -1,16 +1,17 @@
-'use strict';
+/* eslint-disable no-bitwise, no-eval */
 
-const CallByMeaning = require('cbm-api');
+const CallByMeaning = require('cbm-api'); // eslint-disable-line
+
 const cbm = new CallByMeaning();
 
 async function clock() {
-  let result = await cbm.search({outputNodes: 'time'}); // **
-  let getTime = eval(cbm.getCode(result.body[1].function));
-  let time = getTime();
-  let seconds = ~~(time / 1000) % 60;
-  let minutes = ~~((time / 1000) / 60) % 60;
-  let hours = ~~((time / 1000) / 60 / 60) % 24 + 2; // + 2 for local time
-  return {seconds: seconds, minutes: minutes, hours: hours};
+  const result = await cbm.search({ outputNodes: 'time' }); // **
+  const getTime = eval(cbm.getCode(result.body[1].function));
+  const time = getTime();
+  const seconds = ~~(time / 1000) % 60;
+  const minutes = ~~((time / 1000) / 60) % 60;
+  const hours = (~~((time / 1000) / 60 / 60) % 24) + 2; // + 2 for local time
+  return { seconds, minutes, hours };
 }
 
 module.exports = clock;

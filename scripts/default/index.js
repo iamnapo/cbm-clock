@@ -1,11 +1,11 @@
-'use strict';
+/* eslint-disable no-bitwise */
 
 function clock() {
-  let time = new Date().getTime();
-  let seconds = ~~(time / 1000) % 60;
-  let minutes = ~~((time / 1000) / 60) % 60;
-  let hours = ~~((time / 1000) / 60 / 60) % 24 + 2; // + 2 for local time
-  return {seconds: seconds, minutes: minutes, hours: hours};
+  const time = new Date().getTime();
+  const seconds = ~~(time / 1000) % 60;
+  const minutes = ~~((time / 1000) / 60) % 60;
+  const hours = (~~((time / 1000) / 60 / 60) % 24) + 2; // + 2 for local time
+  return { seconds, minutes, hours };
 }
 
 module.exports = clock;

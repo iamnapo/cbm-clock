@@ -1,5 +1,1 @@
-'use strict';
-
-module.exports = () => {
-  return Date.now();
-};
+module.exports = () => Date.now();
